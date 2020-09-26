@@ -2,14 +2,8 @@
 
 console.log('This script populates some test books, authors, genres and bookinstances to your database. Specified database as argument - e.g.: populatedb mongodb+srv://cooluser:coolpassword@cluster0-mbdj7.mongodb.net/local_library?retryWrites=true');
 
-// Get arguments passed on command line
 var userArgs = process.argv.slice(2);
-/*
-if (!userArgs[0].startsWith('mongodb')) {
-    console.log('ERROR: You need to specify a valid mongodb URL as the first argument');
-    return
-}
-*/
+
 var async = require('async')
 var Book = require('./models/book')
 var Author = require('./models/author')
@@ -132,7 +126,6 @@ function createGenreAuthors(cb) {
           genreCreate("French Poetry", callback);
         },
         ],
-        // optional callback
         cb);
 }
 
@@ -161,7 +154,6 @@ function createBooks(cb) {
           bookCreate('Test Book 2', 'Summary of test book 2', 'ISBN222222', authors[4], false, callback)
         }
         ],
-        // optional callback
         cb);
 }
 
@@ -202,7 +194,6 @@ function createBookInstances(cb) {
           bookInstanceCreate(books[1], 'Imprint XXX3', false, false, callback)
         }
         ],
-        // Optional callback
         cb);
 }
 
@@ -213,7 +204,7 @@ async.series([
     createBooks,
     createBookInstances
 ],
-// Optional callback
+
 function(err, results) {
     if (err) {
         console.log('FINAL ERR: '+err);
@@ -222,6 +213,5 @@ function(err, results) {
         console.log('BOOKInstances: '+bookinstances);
         
     }
-    // All done, disconnect from database
     mongoose.connection.close();
 });
