@@ -12,7 +12,6 @@ app.use(compression());
 app.use(helmet());
 
 let indexRouter = require('./routes/index');
-let usersRouter = require('./routes/users');
 let catalogRouter = require('./routes/catalog');
 
 const mongoose = require('mongoose');
@@ -35,7 +34,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/catalog', catalogRouter);
 
 app.use(function(req, res, next) {
