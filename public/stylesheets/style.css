@@ -17,8 +17,7 @@ body {
 
 .content {
   height: 100%;
-  padding: 0 30px 30px 30px;
-  justify-items: left;
+  padding: 0 55px 30px 20px;
   text-align: center;  
   font-size: 16px;
 }
@@ -187,7 +186,8 @@ nav a:hover { color: #7e1717; }
 
 .nostyle {
   list-style: none;
-  margin: 6px 0;
+  justify-content: center;
+  margin: 6px 50px 0 0;
 }
 
 .abutton {
