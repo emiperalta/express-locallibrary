@@ -5,8 +5,14 @@ block content
 
     ul
       each author in author_list
-        li
-          a(href=author.url) #{author.fullname}
+        li.nostyle
+          a(href=author.url class='nodeco') #{author.fullname}
           |  (#{author.lifespan})
       else
-        li There are no authors.
+        li.nostyle There are no authors.
+
+    br
+    hr
+    br
+    p
+      a.abutton(href='/catalog/author/create') Create new author

@@ -14,7 +14,7 @@ app.use(helmet());
 let indexRouter = require('./routes/index');
 let catalogRouter = require('./routes/catalog');
 
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'); 
 const mongoDB = process.env.MONGODB_URI;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });  
 mongoose.Promise = global.Promise; 

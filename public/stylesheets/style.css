@@ -1,14 +1,280 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600;700&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --headerbackground: #e2eefe;
+}
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0;
+  background: #B8D6FD;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 14px;
 }
 
-a {
-  color: #00B7FF;
+.content {
+  height: 100%;
+  padding: 0 30px 30px 30px;
+  justify-items: left;
+  text-align: center;  
+  font-size: 16px;
 }
 
-.sidebar-nav {
-  margin-top: 20px;
-  padding: 20px;
+.container {
+  padding: 35px;
+  font-size: 14px;
+  height: 100%;
+}
+
+header {
+  background: var(--headerbackground);
+  text-align: center;
+  position: relative;  
+  padding: 18px;
+  z-index: 999;
+  width: 100%;
+}
+
+.logo {
+  margin: 0;
+  font-size: 2.1rem;
+  color: rgb(60, 136, 167);
+  outline: none;
+  text-decoration: none;
+}
+
+.nav-toggle {
+  display: none;
+}
+
+.nav-toggle-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 1rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  display: block;
+  background: black;
+  height: 2px;
+  width: 2em;
+  border-radius: 2px;
+  position: relative;
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  content: '';
+  position: absolute;
+}
+
+.nav-toggle-label span::before {
+  bottom: 7px;
+}
+
+.nav-toggle-label span::after {
+  top: 7px;
+}
+
+nav {
+  position: absolute;
+  text-align: left;
+  top: 100%;
+  left: 0;
+  background: var(--headerbackground);
+  width: 100%;
+  transform: scale(1, 0);
+  transform-origin: top;
+  transition: transform 400ms ease-in-out;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
   list-style: none;
+}
+
+nav li {
+  margin-bottom: 1em;
+  margin-left: 1em;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 100ms ease-in-out;
+}
+
+nav a:hover { color: #7e1717; } 
+
+.nav-toggle:checked ~ nav {
+  transform: scale(1, 1);
+}
+
+.nav-toggle:checked ~ nav a {
+  opacity: 1;
+  transition: opacity 1000ms ease-in-out;
+}
+
+@media screen and (min-width: 800px) {
+  .nav-toggle-label {
+    display: none;
+  }
+
+  header {
+    display: grid;
+    grid-template-columns: 0fr auto minmax(500px, 3fr) 1fr;
+  }
+
+  .logo {
+    grid-column: 2 / 2;
+  }
+
+  nav {
+    all: unset;
+    grid-column: 3 / 5;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  nav ul {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  nav li {
+    margin-left: 2.5em;
+    margin-bottom: 0;
+  }
+
+  nav a {
+    opacity: 1;
+    position: relative;
+    text-decoration: none;
+  }
+
+  nav a::before {
+    content: '';
+    display: block;
+    height: 2px;
+    background: black;
+    position: absolute;
+    bottom: -0.75em;
+    left: 0;
+    right: 0;
+    transform: scale(0,1);
+    transform-origin: left;
+    transition: transform ease-in-out 250ms;
+  }
+
+  nav a:hover::before {
+    transform: scale(1,1);
+  }
+}
+
+.nostyle {
+  list-style: none;
+  margin: 6px 0;
+}
+
+.abutton {
+  padding: 8px;
+  border-radius: 1em;
+  border: none;
+  outline: none;
+  text-decoration: none;
+  box-shadow: 2px 2px 2px rgb(158, 18, 18);
+  color: rgb(158, 18, 18);;
+  background: var(--headerbackground);
+}
+
+.img {
+  height: 20px;
+  position: absolute;
+}
+
+.nodeco {
+  text-decoration: none;
+  color: rgb(158, 18, 18);
+}
+
+.nodeco:hover {
+  color: rgb(41, 31, 31);
+}
+
+.bg-status-success {
+  background: #383838;
+  padding-right: 4px;
+  color: rgb(0, 255, 0);
+} 
+
+.bg-status-danger {
+  background: #383838;
+  padding-right: 4px;
+  color: orange;
+} 
+
+.bg-status-warning {
+  background: #383838;
+  padding-right: 4px;
+  color: red;
+} 
+
+h1 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.btn {
+  text-decoration: none;
+  color: #ffffff;
+  background: rgb(158, 18, 18);
+  outline: none;
+  border: thin;
+  border-radius: 4px;
+  font-size: 14px;
+  padding: 6px;
+  margin: 15px 0;
+}
+
+.btn-warning {
+  background: #F93106;
+  color: white;
+}
+
+input[type='text'], input[type='date'], select, textarea, date {  
+  width: 100%;
+  padding: 7px;
+  margin: 8px 0;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+textarea {
+  resize: none;
+  height: 100px;
+}
+
+.form {
+  display: block;
+  text-align: center;
+}
+
+form {
+  display: inline-block;
 }

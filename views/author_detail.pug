@@ -11,15 +11,16 @@ block content
     dl
       each book in author_books
         dt
-          a(href=book.url) #{book.title} 
+          a(href=book.url class='nodeco') #{book.title} 
         dd #{book.summary}
 
       else
         p This author has no books.
-  
+  br
   hr
+  br
   p
-    a(href=author.url + '/delete') Delete author
-  p
-    a(href=author.url + '/update') Update author
+    a(href=author.url + '/update' class='abutton') Update author
+    |&nbsp;
+    a(href=author.url + '/delete' class='abutton') Delete author
 

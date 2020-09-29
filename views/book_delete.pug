@@ -22,7 +22,7 @@ block content
         if bookinstance.status!='Available'
           dd #[strong Due back:] #{bookinstance.due_back}
         dd #[strong Id:] 
-          a(href=bookinstance.url) #{bookinstance._id}
+          a.nodeco(href=bookinstance.url) #{bookinstance._id}
     
   else
     p Do you really want to delete this book?

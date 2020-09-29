@@ -1,15 +1,15 @@
 extends layout
 
-block content
+block content  
   h1= title
 
   p #[strong Author: ]
-    a(href=book.author.url) #{book.author.fullname}
+    a.nodeco(href=book.author.url) #{book.author.fullname}
   p #[strong Summary:] #{book.summary}
   p #[strong ISBN:] #{book.isbn}
   p #[strong Genre:]&nbsp;
     each val, index in book.genre
-      a(href=val.url) #{val.name}
+      a.nodeco(href=val.url) #{val.name}
       if index < book.genre.length -1
         |, 
     else
@@ -30,14 +30,16 @@ block content
       if val.status!='Available'
         p #[strong Due back:] #{val.due_back_formatted}
       p #[strong Id:]&nbsp;
-        a(href=val.url) #{val._id}
+        a.nodeco(href=val.url) #{val._id}
     
     else  
       p There are no copies of this book in the library.
 
+  br
   hr
+  br
   p
-    a(href=book.url + '/delete') Delete book
-  p
-    a(href=book.url + '/update') Update book
+    a.abutton(href=book.url + '/update') Update book
+    |&nbsp;
+    a.abutton(href=book.url + '/delete') Delete book
     

@@ -1,19 +1,19 @@
 extends layout
 
 block content
-  h1=title
+  h1= title
 
   form(action='', method='post')
-    div.form-group
+    div
       label(for='first_name') First name:
       input#first_name.form-control(type='text' placeholder='First name (Christian) last' required='true' name='first_name'  value=(undefined===author ? '' : author.first_name))
-    div.form-group
+    div
       label(for='family_name') Family name:
       input#family_name.form-control(type='text' placeholder='Family name (surname)' required='true' name='family_name'  value=(undefined===author ? '' : author.family_name))
-    div.form-group
+    div
       label(for='date_of_birth') Date of birth:
       input#date_of_birth.form-control(type="date" name='date_of_birth' value=(undefined===author ? '' : author.date_of_birth))
-    div.form-group
+    div
       label(for='date_of_death') Date of death:
       input#date_of_death.form-control(type="date" name='date_of_death' value=(undefined===author ? '' : author.date_of_death))
     button.btn.btn-primary(type='submit' style='margin-bottom:10px;') Submit

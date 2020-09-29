@@ -5,15 +5,21 @@ block content
 
   ul
     each val in bookinstance_list
-      li
-        a(href=val.url) #{val.book.title} / #{val.imprint} 
-        if val.status=='Available'
-          span.text-success  #{val.status}
+      li.nostyle
+        a(href=val.url class='nodeco') #{val.book.title} / #{val.imprint} &nbsp;&nbsp;
+        if val.status=='Available' 
+          span.text-success(class='bg-status-success')  #{val.status}
         else if val.status=='Maintenance'
-          span.text-danger  #{val.status}
+          span(class='bg-status-danger')  #{val.status}
         else
-          span.text-warning  #{val.status}
+          span(class='bg-status-warning')  #{val.status}
         if val.status!='Available'
           span   (Due: #{val.due_back_formatted})
     else
       p There are no book copies in this library.
+
+  br
+  hr
+  br
+  p
+    a.abutton(href='/catalog/bookinstance/create') Create new book-instance

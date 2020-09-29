@@ -4,7 +4,7 @@ block content
   h1= title
 
   form(action='', method='post')
-    div.form-group
+    div
       label(for='book') Book:
       select#book.form-control(type='select' name='book' required='true' placeholder='Select book')
         - book_list.sort((a, b) => { let titleA = a.title.toUpperCase(); let titleB = b.title.toUpperCase(); return (titleA < titleB) ? -1 : (titleA > titleB) ? 1 : 0; })
@@ -13,16 +13,13 @@ block content
             option(value=book._id selected=(selected_book==book._id.toString() ? 'selected' : false)) #{book.title}
           else
             option(value=book._id) #{book.title}
-
-    div.form-group
+    div
       label(for='imprint') Imprint:
       input#imprint.form-control(type='text' placeholder='Publisher and date information' required='true' name='imprint' value=(undefined===bookinstance ? '' : bookinstance.imprint))   
-     
-    div.form-group
+    div
       label(for='due_back') Due back:
-      input#due_back.form-control(type='date' name='due_back' value=(undefined===bookinstance ? '' : bookinstance.due_back) )
-        
-    div.form-group
+      input#due_back.form-control(type='date' name='due_back' value=(undefined===bookinstance ? '' : bookinstance.due_back))        
+    div
       label(for='status') Status:
       select#status.form-control(type='select' name='status' required='true' placeholder='Select status')
         option(value='Maintenance' selected=(undefined===bookinstance || bookinstance.status!='Maintenance' ? false : 'selected')) Maintenance
