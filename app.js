@@ -15,7 +15,7 @@ let indexRouter = require('./routes/index');
 let catalogRouter = require('./routes/catalog');
 
 const mongoose = require('mongoose'); 
-const mongoDB = process.env.MONGODB_URI;
+const mongoDB = 'mongodb+srv://emindg:emindg1@local-library.vnndk.azure.mongodb.net/local-library?retryWrites=true&w=majority';
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });  
 mongoose.Promise = global.Promise; 
 let db = mongoose.connection; 
