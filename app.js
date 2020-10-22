@@ -5,6 +5,7 @@ let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 let compression = require('compression');
 let helmet = require('helmet');
+require('dotenv').config();
 
 let app = express();
 
@@ -15,13 +16,12 @@ let indexRouter = require('./routes/index');
 let catalogRouter = require('./routes/catalog');
 
 const mongoose = require('mongoose'); 
-const mongoDB = 'mongodb+srv://emindg:emindg1@local-library.vnndk.azure.mongodb.net/local-library?retryWrites=true&w=majority';
-mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });  
-mongoose.Promise = global.Promise; 
-let db = mongoose.connection; 
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-db.once('open', () => {
-    console.log(`Connected to ${mongoDB} successfully`);  
+const mongoDB = process.env.MONGO_URI;
+mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
+
+mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection error:'));
+mongoose.connection.once('open', () => {
+    console.log(`Connected to DB successfully`);  
 })
 
 app.set('views', path.join(__dirname, 'views'));
